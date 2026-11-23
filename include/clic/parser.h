@@ -1,12 +1,16 @@
 #ifndef PARSER_H
-#define PARSE_H
+#define PARSER_H
 
-typedef enum {
-    PARSE_SEEK,     // lendo comandos ou opções
-    PARSE_ARGS,     // Lendo argumentos de um comando ou opção
-    PARSE_ENDED     // Quando o usuário digita "--". Tudo vira argumento posicional
-} parse_mode;
+#include "clic/error.h"
+#include "clic/opt.h"
 
-int parse_cli(int argc, char *argv[]);
+typedef struct clic_parser clic_parser;
+
+struct clic_parser *clic_parser_init(void);
+void clic_parser_free(clic_parser *parser);
+
+clic_error clic_parse(struct clic_parser *parser, int argc, char *argv[]);
+
+clic_error clic_parser_add_option(clic_opt *option);
 
 #endif

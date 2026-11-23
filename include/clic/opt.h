@@ -2,27 +2,23 @@
 #define CLIC_OPT_H
 
 #include <stdbool.h>
-#include "clic/argument.h"
 
-typedef struct clic_opt clic_option;
+#include "clic/arity.h"
+#include "clic/error.h"
 
-typedef int (*opt_action_fn)(clic_option *option, void *user_data);
+typedef struct clic_opt clic_opt;
 
-struct clic_opt
-{
-    char short_name;
-    const char *long_name;
-    // const char **aliases; Fica de promessa
-    const char *description;
-    bool was_set;
-    bool required;
-    clic_argument arguments;
-    opt_action_fn opt_action;
-    clic_option *next;
-};
+typedef int (*opt_action_fn)(clic_opt *option, void *user_data);
 
-clic_option clic_new_option(char short_name, const char *long_name, const char *description, clic_type type, opt_action_fn action, bool required);
+clic_error clic_opt_new(struct clic_opt **out, const char *raw_short, const char *raw_long, const char *description, 
+                      clic_value_arity arity, opt_action_fn action, bool required);
 
-int clic_add_option(clic_option *option);
+void clic_opt_free_all(struct clic_opt *head);
+
+clic_error clic_opt_find(struct clic_opt *head, const char *token, struct clic_opt **out);
+
+void clic_opt_mark_provided(struct clic_opt* opt);
+
+bool clic_opt_was_provided(struct clic_opt *opt);
 
 #endif

@@ -1,0 +1,32 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iinclude",
+      "-Wall",
+      "-Wextra",
+      "-c",
+      "-o",
+      "src/opt.o",
+      "src/opt.c"
+    ],
+    "directory": "/home/anderson/Documentos/codigos/c/clic",
+    "file": "/home/anderson/Documentos/codigos/c/clic/src/opt.c",
+    "output": "/home/anderson/Documentos/codigos/c/clic/src/opt.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iinclude",
+      "-Wall",
+      "-Wextra",
+      "-c",
+      "-o",
+      "src/parser.o",
+      "src/parser.c"
+    ],
+    "directory": "/home/anderson/Documentos/codigos/c/clic",
+    "file": "/home/anderson/Documentos/codigos/c/clic/src/parser.c",
+    "output": "/home/anderson/Documentos/codigos/c/clic/src/parser.o"
+  }
+]

@@ -8,7 +8,7 @@ LIB_OBJS = $(LIB_SRCS:.c=.o)
 TESTS_SRCS = $(wildcard tests/*.c)
 TESTS_OBJS = $(TESTS_SRCS:.c=.o)
 
-all: ($TARGET)
+all: $(TARGET)
 
 $(TARGET): $(TESTS_OBJS) $(LIB_OBJS)
 	$(CC) $^ -o $@
